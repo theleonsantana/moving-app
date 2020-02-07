@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  contact: MyString
+  address: MyString
+  start_at: 2020-02-07 16:45:26
+  truck: false
+  helper: 1
+
+two:
+  contact: MyString
+  address: MyString
+  start_at: 2020-02-07 16:45:26
+  truck: false
+  helper: 1
