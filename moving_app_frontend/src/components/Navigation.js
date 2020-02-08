@@ -1,17 +1,40 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { AppBar, Button, ButtonGroup } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
-export default class Navigation extends Component {
-	render() {
-		return (
-			<div>
-				<NavLink exact to="/" activeClassName="is-active">
+const useStyles = makeStyles(theme => ({
+	root: {
+		'& > *': {
+			margin: theme.spacing(1),
+		},
+	},
+}));
+
+export default function Navigation() {
+	const classes = useStyles();
+
+	return (
+		<AppBar
+			position="fixed"
+			color="inherit"
+			elevation={4}
+			className={classes.root}
+		>
+			{/* <Toolbar variant="dense"> */}
+			<ButtonGroup
+				variant="text"
+				color="light"
+				aria-label="text primary button group"
+			>
+				<Button component={NavLink} exact to="/" color="light" mt={1}>
 					Home
-				</NavLink>
-				<NavLink exact to="/all-jobs" activeClassName="is-active">
+				</Button>
+				<Button component={NavLink} exact to="/all-jobs" color="light" mt={1}>
 					View All Requests
-				</NavLink>
-			</div>
-		);
-	}
+				</Button>
+			</ButtonGroup>
+			{/* </Toolbar> */}
+		</AppBar>
+	);
 }

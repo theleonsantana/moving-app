@@ -1,13 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from '@material-ui/styles';
-import {
-	Container,
-	Grid,
-	Typography,
-	CssBaseline,
-	AppBar,
-	createMuiTheme,
-} from '@material-ui/core';
+import { CssBaseline, createMuiTheme } from '@material-ui/core';
 import './App.css';
 import MainRouter from './Router';
 

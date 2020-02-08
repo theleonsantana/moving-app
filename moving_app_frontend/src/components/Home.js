@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { Container, Grid, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import Layout from './Layout';
 
 export default class Home extends Component {

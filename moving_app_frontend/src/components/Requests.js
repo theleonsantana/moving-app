@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Layout from './Layout';
 import axios from 'axios';
 
 export default class Requests extends Component {
@@ -17,8 +18,7 @@ export default class Requests extends Component {
 	};
 	render() {
 		return (
-			<div>
-				<h2>Client's Requests</h2>
+			<Layout header="Client's Requests">
 				{this.state.requests.map((request, index) => {
 					return (
 						<>
@@ -41,7 +41,7 @@ export default class Requests extends Component {
 						</>
 					);
 				})}
-			</div>
+			</Layout>
 		);
 	}
 }
