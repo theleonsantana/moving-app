@@ -24,10 +24,17 @@ export default class Requests extends Component {
 							<p>{request.contact}</p>
 							<p>{request.contact_info}</p>
 							<p>
-								<p>{request.start_at}</p>
+								{new Intl.DateTimeFormat('en-US', {
+									month: 'long',
+									day: '2-digit',
+									year: 'numeric',
+									hour: '2-digit',
+									minute: '2-digit',
+								}).format(new Date(request.start_at))}
 							</p>
 							<p>{request.address}</p>
 							<p>Truck Needed: {request.truck ? 'Yes' : 'No'}</p>
+							<p>Helpers: {request.helper}</p>
 						</>
 					);
 				})}
