@@ -1,26 +1,21 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { HashRouter, NavLink, Route } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 import Home from './components/Home';
+import Navigation from './components/Navigation';
+import NewEntry from './components/NewEntry';
 
 export default class MainRouter extends Component {
 	render() {
 		return (
 			<>
 				<HashRouter>
-					<NavLink
-						exact
-						to="/"
-						activeClassName="is-active"
-						className="nav-item m-2"
-					>
-						Home
-					</NavLink>
+					{/* {<Route path="/" exact /> ? null : <Navigation />} */}
+					<Navigation />
 					<div
-						// className={Route.to === '/my-plots' ? '' : 'app-container'}
-						className={'site-container'}
+					// className={Route.to === '/my-plots' ? '' : 'app-container'}
 					>
 						<Route path="/" exact component={Home} />
+						<Route path="/request-service" component={NewEntry} />
 
 						{/* <Route
 							path="/login"

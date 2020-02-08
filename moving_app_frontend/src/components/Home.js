@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-
+import { withRouter } from 'react-router-dom';
 import { Container, Grid, Typography } from '@material-ui/core';
 
 export default class Home extends Component {
+	nextPath(path) {
+		this.props.history.push(path);
+	}
 	render() {
 		return (
 			<Container>
@@ -27,7 +30,9 @@ export default class Home extends Component {
 							congue sapien vitae erat vulputate ultricies. Sed egestas libero
 							ut risus tempor, finibus blandit nunc lacinia.
 						</Typography>
-						<button>Get Started</button>
+						<button onClick={() => this.nextPath('/request-service')}>
+							Get Started
+						</button>
 					</Grid>
 				</Grid>
 			</Container>

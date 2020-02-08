@@ -1,5 +1,4 @@
 import React from 'react';
-import Requests from './components/Requests';
 import { ThemeProvider } from '@material-ui/styles';
 import {
 	Container,
