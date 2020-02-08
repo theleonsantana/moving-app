@@ -1,4 +1,5 @@
 import React from 'react';
+import Requests from './components/Requests';
 import './App.css';
 
 function App() {
@@ -7,7 +8,9 @@ function App() {
 			<header className="App-header">
 				<h1>Moving App</h1>
 			</header>
-			<main className="App-Container"></main>
+			<main className="App-Container">
+				<Requests />
+			</main>
 		</div>
 	);
 }
