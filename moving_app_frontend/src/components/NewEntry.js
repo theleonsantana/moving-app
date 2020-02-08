@@ -20,27 +20,28 @@ export default class NewEntry extends Component {
 	};
 
 	handleSubmit = event => {
+		const { history } = this.props;
 		event.preventDefault();
 		const {
 			contact,
-			contact_info,
 			start_at,
 			address,
 			truck,
 			helper,
+			contact_info,
 		} = this.state;
 		const request = {
 			contact,
-			contact_info,
 			start_at,
 			address,
 			truck,
 			helper,
+			contact_info,
 		};
 		axios
 			.post('http://localhost:3000/requests', request)
-			.then(function(response) {
-				console.log(response);
+			.then(() => {
+				history.push('/all-jobs');
 			})
 			.catch(function(error) {
 				console.log(error);
@@ -64,7 +65,7 @@ export default class NewEntry extends Component {
 						<input
 							type="text"
 							onChange={this.handleChange}
-							id="contact"
+							id="contact_info"
 							value={this.state.contact_info}
 						/>
 					</label>

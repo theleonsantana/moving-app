@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 export default class Requests extends Component {
@@ -11,7 +12,7 @@ export default class Requests extends Component {
 	getRequests = () => {
 		axios
 			.get('http://localhost:3000/requests')
-			.then(({ data }) => this.setState(this.setState({ requests: data })))
+			.then(({ data }) => this.setState({ requests: data }))
 			.catch(({ response }) => console.log(response));
 	};
 	render() {
@@ -21,7 +22,9 @@ export default class Requests extends Component {
 				{this.state.requests.map((request, index) => {
 					return (
 						<>
-							<p>{request.contact}</p>
+							<Link to={`/request-info/${request.id}`}>
+								<p>{request.contact}</p>
+							</Link>
 							<p>{request.contact_info}</p>
 							<p>
 								{new Intl.DateTimeFormat('en-US', {
