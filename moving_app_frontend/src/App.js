@@ -10,6 +10,7 @@ import {
 	createMuiTheme,
 } from '@material-ui/core';
 import './App.css';
+import MainRouter from './Router';
 
 const theme = createMuiTheme({
 	palette: {
@@ -21,6 +22,7 @@ function App() {
 	return (
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
+			<MainRouter />
 		</ThemeProvider>
 	);
 }
