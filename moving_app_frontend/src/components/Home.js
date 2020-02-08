@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Typography } from '@material-ui/core';
+import { Typography, Button } from '@material-ui/core';
 import Layout from './Layout';
 
 export default class Home extends Component {
@@ -23,9 +23,13 @@ export default class Home extends Component {
 					ultricies. Sed egestas libero ut risus tempor, finibus blandit nunc
 					lacinia.
 				</Typography>
-				<button onClick={() => this.nextPath('/request-service')}>
+				<Button
+					variant="contained"
+					color="primary"
+					onClick={() => this.nextPath('/request-service')}
+				>
 					Get Started
-				</button>
+				</Button>
 			</Layout>
 		);
 	}
