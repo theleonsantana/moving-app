@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
 import axios from 'axios';
+import React, { Component } from 'react';
+import Layout from './Layout';
 
 export default class JobInfo extends Component {
 	state = {
@@ -26,14 +27,19 @@ export default class JobInfo extends Component {
 			})
 			.catch(({ response }) => console.log(response));
 	};
+	nextPath(path) {
+		this.props.history.push(path);
+	}
 
 	render() {
 		const { requests } = this.state;
 		return (
-			<div>
-				<p>{requests.contact}</p>
+			<Layout>
+				<h2>{requests.contact}</h2>
+				<button>Update</button>
 				<button onClick={this.handleDelete}>Delete</button>
-			</div>
+				<button onClick={() => this.nextPath('/all-jobs')}>Back</button>
+			</Layout>
 		);
 	}
 }

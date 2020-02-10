@@ -13,7 +13,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function Navigation() {
 	const classes = useStyles();
-
 	return (
 		<AppBar
 			position="fixed"
@@ -24,13 +23,19 @@ export default function Navigation() {
 			{/* <Toolbar variant="dense"> */}
 			<ButtonGroup
 				variant="text"
-				color="light"
+				color="secondary"
 				aria-label="text primary button group"
 			>
-				<Button component={NavLink} exact to="/" color="light" mt={1}>
+				<Button component={NavLink} exact to="/" color="secondary" mt={1}>
 					Home
 				</Button>
-				<Button component={NavLink} exact to="/all-jobs" color="light" mt={1}>
+				<Button
+					component={NavLink}
+					exact
+					to="/all-jobs"
+					color="secondary"
+					mt={1}
+				>
 					View All Requests
 				</Button>
 			</ButtonGroup>

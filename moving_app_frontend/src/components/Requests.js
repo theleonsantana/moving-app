@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { withStyles } from '@material-ui/styles';
+import { Typography, Card } from '@material-ui/core';
 import Layout from './Layout';
 import axios from 'axios';
 
-export default class Requests extends Component {
+const styles = theme => ({
+	root: {
+		width: 'calc(100%/2)',
+	},
+});
+
+class Requests extends Component {
 	state = {
 		requests: [],
 	};
@@ -17,11 +26,15 @@ export default class Requests extends Component {
 			.catch(({ response }) => console.log(response));
 	};
 	render() {
+		const { classes } = this.props;
 		return (
-			<Layout header="Client's Requests">
+			<Layout>
+				<Typography variant="h2" align="center">
+					Client's Requests
+				</Typography>
 				{this.state.requests.map((request, index) => {
 					return (
-						<>
+						<Card className={classes.root}>
 							<Link to={`/request-info/${request.id}`}>
 								<p>{request.contact}</p>
 							</Link>
@@ -38,10 +51,16 @@ export default class Requests extends Component {
 							<p>{request.address}</p>
 							<p>Truck Needed: {request.truck ? 'Yes' : 'No'}</p>
 							<p>Helpers: {request.helper}</p>
-						</>
+						</Card>
 					);
 				})}
 			</Layout>
 		);
 	}
 }
+
+Requests.propTypes = {
+	classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Requests);

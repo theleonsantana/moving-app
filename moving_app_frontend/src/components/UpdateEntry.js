@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Layout from './Layout';
 
-export default class NewEntry extends Component {
+export default class UpdateEntry extends Component {
 	state = {
 		contact: '',
 		contact_info: '',
