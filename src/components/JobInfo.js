@@ -11,7 +11,7 @@ export default class JobInfo extends Component {
 			match: { params },
 		} = this.props;
 		axios
-			.get(`http://localhost:3000/requests/${params.jobId}`)
+			.get(`https://moving-app-ada-api.herokuapp.com/requests/${params.jobId}`)
 			.then(({ data }) => this.setState({ requests: data }))
 			.catch(({ response }) => console.log(response));
 	}
@@ -21,7 +21,9 @@ export default class JobInfo extends Component {
 			history,
 		} = this.props;
 		axios
-			.delete(`http://localhost:3000/requests/${params.jobId}`)
+			.delete(
+				`https://moving-app-ada-api.herokuapp.com/requests/${params.jobId}`
+			)
 			.then(() => {
 				history.push('/');
 			})

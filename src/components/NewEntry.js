@@ -40,7 +40,7 @@ export default class NewEntry extends Component {
 			contact_info,
 		};
 		axios
-			.post('http://localhost:3000/requests', request)
+			.post('https://moving-app-ada-api.herokuapp.com/requests', request)
 			.then(() => {
 				history.push('/all-jobs');
 			})

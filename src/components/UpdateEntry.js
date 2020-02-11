@@ -12,7 +12,7 @@ export default class UpdateEntry extends Component {
 			match: { params },
 		} = this.props;
 		axios
-			.get(`http://localhost:3000/requests/${params.jobId}`)
+			.get(`https://moving-app-ada-api.herokuapp.com/requests/${params.jobId}`)
 			.then(({ data: request }) => {
 				this.setState({ request });
 			});
@@ -31,7 +31,10 @@ export default class UpdateEntry extends Component {
 		event.preventDefault();
 		const { request } = this.state;
 		axios
-			.patch(`http://localhost:3000/requests/${request.id}`, request)
+			.patch(
+				`https://moving-app-ada-api.herokuapp.com/requests/${request.id}`,
+				request
+			)
 			.then(() => {
 				const { history } = this.props;
 

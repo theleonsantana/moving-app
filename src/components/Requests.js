@@ -21,7 +21,7 @@ class Requests extends Component {
 	}
 	getRequests = () => {
 		axios
-			.get('http://localhost:3000/requests')
+			.get('https://moving-app-ada-api.herokuapp.com/requests')
 			.then(({ data }) => this.setState({ requests: data }))
 			.catch(({ response }) => console.log(response));
 	};
