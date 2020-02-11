@@ -19,12 +19,21 @@ export default class UpdateEntry extends Component {
 	}
 
 	handleChange = event => {
+		const { request } = this.state;
 		const target = event.target;
 		const value = target.type === 'checkbox' ? target.checked : target.value;
 		this.setState({
-			[event.target.id]: value,
+			request: { ...request, [event.target.id]: value },
 		});
 	};
+
+	// handleChange = event => {
+	// 	const { request: id, value } = event.target;
+
+	// 	this.setState({
+	// 		[id]: value,
+	// 	});
+	// };
 
 	handleSubmit = request => {
 		axios
@@ -43,6 +52,7 @@ export default class UpdateEntry extends Component {
 		history.push(`/request-info/${request.jobId}`);
 	};
 	render() {
+		const { request } = this.state;
 		return (
 			<Layout header="Submit a request">
 				<form onSubmit={this.handleSubmit}>
@@ -52,7 +62,7 @@ export default class UpdateEntry extends Component {
 							type="text"
 							onChange={this.handleChange}
 							id="contact"
-							value={this.state.contact}
+							value={request.contact}
 						/>
 					</label>
 					<label htmlFor="contact_info">
@@ -61,7 +71,7 @@ export default class UpdateEntry extends Component {
 							type="text"
 							onChange={this.handleChange}
 							id="contact_info"
-							value={this.state.contact_info}
+							value={request.contact_info}
 						/>
 					</label>
 					<label htmlFor="start_at">
@@ -70,7 +80,7 @@ export default class UpdateEntry extends Component {
 							onChange={this.handleChange}
 							type="datetime-local"
 							id="start_at"
-							value={this.state.start_at}
+							value={request.start_at}
 							min="2020-01-01T12:00"
 							max="2050-01-01T12:00"
 						/>
@@ -81,7 +91,7 @@ export default class UpdateEntry extends Component {
 							type="text"
 							onChange={this.handleChange}
 							id="address"
-							value={this.state.address}
+							value={request.address}
 						/>
 					</label>
 					<label htmlFor="truck">
@@ -89,7 +99,7 @@ export default class UpdateEntry extends Component {
 						<input
 							type="checkbox"
 							id="truck"
-							checked={this.state.isGoing}
+							checked={request.isGoing}
 							onChange={this.handleChange}
 						/>
 					</label>
@@ -100,7 +110,7 @@ export default class UpdateEntry extends Component {
 							max="5"
 							onChange={this.handleChange}
 							id="helper"
-							value={this.state.helper}
+							value={request.helper}
 						/>
 					</label>
 					<input type="submit" value="Submit Job Request" />
