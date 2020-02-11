@@ -27,14 +27,6 @@ export default class UpdateEntry extends Component {
 		});
 	};
 
-	// handleChange = event => {
-	// 	const { request: id, value } = event.target;
-
-	// 	this.setState({
-	// 		[id]: value,
-	// 	});
-	// };
-
 	handleSubmit = request => {
 		axios
 			.put(`http://localhost:3000/requests${request.jobId}`, request)
@@ -49,7 +41,7 @@ export default class UpdateEntry extends Component {
 		event.preventDefault();
 		const { history } = this.props;
 		const { request } = this.state;
-		history.push(`/request-info/${request.jobId}`);
+		history.push(`/request-info/${request.id}`);
 	};
 	render() {
 		const { request } = this.state;
@@ -113,6 +105,7 @@ export default class UpdateEntry extends Component {
 							value={request.helper}
 						/>
 					</label>
+					<button onClick={this.handleCancel}>Cancel</button>
 					<input type="submit" value="Submit Job Request" />
 				</form>
 			</Layout>
