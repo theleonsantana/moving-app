@@ -4,13 +4,19 @@ import Layout from './Layout';
 
 export default class UpdateEntry extends Component {
 	state = {
-		contact: '',
-		contact_info: '',
-		start_at: undefined,
-		address: '',
-		truck: false,
-		helper: 0,
+		request: {},
 	};
+
+	componentDidMount() {
+		const {
+			match: { params },
+		} = this.props;
+		axios
+			.get(`http://localhost:3000/requests/${params.jobId}`)
+			.then(({ data: request }) => {
+				this.setState({ request });
+			});
+	}
 
 	handleChange = event => {
 		const target = event.target;
@@ -20,33 +26,21 @@ export default class UpdateEntry extends Component {
 		});
 	};
 
-	handleSubmit = event => {
-		const { history } = this.props;
-		event.preventDefault();
-		const {
-			contact,
-			start_at,
-			address,
-			truck,
-			helper,
-			contact_info,
-		} = this.state;
-		const request = {
-			contact,
-			start_at,
-			address,
-			truck,
-			helper,
-			contact_info,
-		};
+	handleSubmit = request => {
 		axios
-			.post('http://localhost:3000/requests', request)
+			.put(`http://localhost:3000/requests${request.jobId}`, request)
 			.then(() => {
-				history.push('/all-jobs');
-			})
-			.catch(function(error) {
-				console.log(error);
+				this.setState({ request });
 			});
+		const { history } = this.props;
+		history.push(`/request-info/${request.jobId}`);
+	};
+
+	handleCancel = event => {
+		event.preventDefault();
+		const { history } = this.props;
+		const { request } = this.state;
+		history.push(`/request-info/${request.jobId}`);
 	};
 	render() {
 		return (
